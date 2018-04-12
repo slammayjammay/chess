@@ -3,7 +3,9 @@
 #include "rlutil.h"
 
 #include "Game.h"
+#include "PieceFactory.h"
 #include "Board.h"
+#include "Knight.h"
 
 using namespace std;
 using namespace rlutil;

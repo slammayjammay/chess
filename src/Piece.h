@@ -2,12 +2,13 @@
 #define PIECE
 
 #include <string>
+#include <iostream>
 
 using namespace std;
 
 class Piece {
 	public:
-		Piece () {}
+		Piece() {}
 		virtual ~Piece() {}
 
 		string name;
