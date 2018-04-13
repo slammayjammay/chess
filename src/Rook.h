@@ -5,10 +5,14 @@
 
 class Rook : public Piece {
 	public:
-		Rook() : Piece() {
+		Rook(char color) : Piece(color) {
 			this->name = "rook";
+			this->color = color;
 			this->notation = 'R';
+			this->unicode = " ♖ ";
 		}
+
+		bool isValidMove(string pos1, string pos2) override;
 };
 
 #endif

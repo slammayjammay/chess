@@ -12,9 +12,14 @@ class Game {
 
 	private:
 		string ESC = "\u001B[";
+		string warning;
 		Board board;
 
 		void eraseDown();
+		void loop();
+		void print();
+		void printInfo();
+		string prompt();
 };
 
 #endif

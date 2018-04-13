@@ -8,14 +8,15 @@ using namespace std;
 
 class Piece {
 	public:
-		Piece() {}
+		Piece(char color) {}
 		virtual ~Piece() {}
 
 		string name;
+		string unicode;
 		char notation;
+		char color;
 
-		string getName();
-		char getNotation();
+		virtual bool isValidMove(string pos1, string pos2) = 0;
 };
 
 #endif
