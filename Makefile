@@ -3,15 +3,15 @@ compile:
 	g++ -I ./include -I ./src \
 	@conanbuildinfo.gcc \
 	-std=c++11 \
-	src/index.cpp \
-	src/Game.cpp \
-	src/Board.cpp \
-	src/Square.cpp \
-	src/Piece.cpp \
-	src/King.cpp \
-	src/Queen.cpp \
-	src/Rook.cpp \
-	src/Bishop.cpp \
-	src/Knight.cpp \
-	src/Pawn.cpp \
+	src/index.cc \
+	src/Game.cc \
+	src/Board.cc \
+	src/Square.cc \
+	src/Piece.cc \
+	src/King.cc \
+	src/Queen.cc \
+	src/Rook.cc \
+	src/Bishop.cc \
+	src/Knight.cc \
+	src/Pawn.cc \
 	-o dist/index.c
