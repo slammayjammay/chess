@@ -9,8 +9,14 @@
 using namespace std;
 
 int main() {
-	Game game;
-	game.start();
+	try {
+		Game game;
+		game.start();
+	} catch (const exception&) {
+		cout << endl;
+		return EXIT_FAILURE;
+	}
 
 	cout << endl;
+	return EXIT_SUCCESS;
 }

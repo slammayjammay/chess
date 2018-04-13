@@ -15,8 +15,8 @@ class Game {
 		string warning;
 		Board board;
 
+		bool loop();
 		void eraseDown();
-		void loop();
 		void print();
 		void printInfo();
 		string prompt();

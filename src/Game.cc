@@ -13,29 +13,40 @@ using namespace std;
 using namespace rlutil;
 using namespace rang;
 
-// const string Game::ESC = "\u001B";
-
 void Game::eraseDown() {
 	cout << this->ESC << "J";
 }
 
 void Game::start() {
 	this->board.setupPieces();
+
+	bool loopStatus;
+
 	while (true) {
-		this->loop();
+		loopStatus = this->loop();
+
+		if (loopStatus == false) {
+			break;
+		}
 	}
 }
 
-void Game::loop() {
+bool Game::loop() {
 	this->print();
 
 	// show warnings
 	cout << endl << endl << fg::red << this->warning << style::reset;
 	cout << this->ESC << "3A" << endl;
 
+	this->warning = "";
+
 	string input;
 	cout << "Play a move: > ";
 	getline(cin, input);
+
+	if (input.compare("exit") == 0) {
+		return false;
+	}
 
 	string moves[] = {
 		input.substr(0, 2),
@@ -44,7 +55,7 @@ void Game::loop() {
 
 	if (!this->board.isOccupied(moves[0])) {
 		this->warning = "There is no piece at [" + moves[0] + "]";
-		return;
+		return true;
 	}
 
 	Piece* piece = this->board.squareAt(moves[0])->piece;
@@ -53,8 +64,9 @@ void Game::loop() {
 		this->board.movePieceFromTo(piece, moves[0], moves[1]);
 	} else {
 		this->warning = "[" + input + "]" + " is not a valid move.";
-		// this->warning = this->board.squareAt("a1")->piece->color;
 	}
+
+	return true;
 }
 
 void Game::print() {
@@ -72,10 +84,15 @@ void Game::printInfo() {
 		<< "the row. \"" << fg::cyan << "a1" << style::reset << "\" is the bottom left corner. \"" << fg::cyan << "h8" << style::reset << "\" is the top" << endl
 		<< "right." << endl
 		<< endl;
+
+	cout << style::bold << style::underline << "INPUT" << style::reset << endl;
 	cout
 		<< "To enter a move, specify a FROM square and a TO square," << endl
 		<< "separated by a space." << endl
 		<< "Ex: " << style::bold << "g1 f3" << style::reset << endl
+		<< endl;
+	cout
+		<< "To exit the game, type \"" << fg::cyan << "exit" << style::reset << "\" or press " << fg::cyan << "CNTRL-C" << style::reset << "." << endl
 		<< endl;
 }
 
